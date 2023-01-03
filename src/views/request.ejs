@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Unauthorized</title>
+        
+        <meta content="hechfx's endpoints" property="og:title">
+        <meta content="An API with a bunch of endpoints, go check it out." property="og:description">
+        <link rel="stylesheet" href="<%= url %>/static/css">
+    </head>
+    <body>
+        <h1>Unauthorized (HTTP CODE 401)</h1>
+        <p>It seems you need a code to proceed, please, go to <a href="<%= url %>/request"><span><%= url %>/request</span></a> endpoint to get your code.</p>
+    
+        <p>Once you get your code, just put in the url as a query, i.g: <span>www.example.com/?code=code_here</span></p>
+
+        <p>Or you can put the code on this blank space if you don't know how to use query parameters.</p>
+
+        <textarea id="insert_code">insert code here</textarea> <button onclick="redirect('<%= url %>')">Access</button>
+
+        <img src="https://cdn.discordapp.com/emojis/692548658117214228.gif">
+    </body>
+
+    <script>
+        function redirect(url) {
+            var code = document.getElementById("insert_code").value
+
+            window.location = `${url}/endpoint?code=${code}`
+        }
+    </script>
+</html>
